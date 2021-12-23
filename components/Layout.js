@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import { AppBar, Typography, Toolbar, Container } from '@material-ui/core'
 import useStyles from '../utils/styles'
 
@@ -10,8 +11,11 @@ const Layout = ({children}) => {
             <Head>
                 <title>Next Project</title>
             </Head>
-            <AppBar position = 'static' className = {classes.navbar} style ={{padding: '1rem'}}>
-                <Typography>amazon</Typography>
+            <AppBar position = 'static' className = {classes.navbar}>
+                <Toolbar>
+                    <Typography variant = 'h6'>amazon</Typography>
+                    <Link href = '/cart'>Cart</Link>
+                </Toolbar>
             </AppBar>
             <Container className ={classes.main}>
                 {children}
