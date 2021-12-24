@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
+import Link from 'next/link'  // Link is a component from Material UI
 import { AppBar, Typography, Toolbar, Container } from '@material-ui/core'
 import useStyles from '../utils/styles'
 
@@ -13,8 +13,9 @@ const Layout = ({children}) => {
             </Head>
             <AppBar position = 'static' className = {classes.navbar}>
                 <Toolbar>
-                    <Typography variant = 'h6'>amazon</Typography>
-                    <Link href = '/cart'>Cart</Link>
+                    <Typography className = {classes.brand} variant = 'h6'><Link href = '/'><a>amazona</a></Link></Typography>
+                    <Typography variant = 'h6'><Link href = '/news'><a>cart</a></Link></Typography>
+                    <Typography variant = 'h6'><Link href = '/news'><a>Login</a></Link></Typography>
                 </Toolbar>
             </AppBar>
             <Container className ={classes.main}>

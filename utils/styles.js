@@ -10,6 +10,14 @@ const useStyles = makeStyles({
     },
     footer: {
         textAlign: 'center'
+    },
+    brand: {
+        color: '#fff',
+        fontSize: '1.5rem',
+        textDecoration: 'none',
+        '&:hover': {
+            color: 'cyan'
+        }
     }
 })
 
