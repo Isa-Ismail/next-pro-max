@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Grid, Typography, Card, CardActionArea, CardMedia, CardContent, CardActions, Button } from "@material-ui/core"
 import Layout from "../components/Layout"
 import data from "../utils/data"
@@ -16,7 +15,7 @@ const Home = () => {
             <Card>
               <Link href = {`/products/${product.slug}`}>
               <CardActionArea>
-                <CardMedia component = "img" image = {product.image} title = {product.name} />
+                <CardMedia height="350" component = "img" image = {product.image} title = {product.name} />
               </CardActionArea>
               </Link>
               <CardContent>

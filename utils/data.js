@@ -91,6 +91,30 @@ const data = {
       countInStock: 20,
       description: 'A popular pants',
     },
+    {
+      name: 'Classic shorts',
+      slug: 'classic-shorts',
+      category: 'Pants',
+      image: '/images/jail.jpg',
+      price: 75,
+      brand: 'Casely',
+      rating: 4.5,
+      numReviews: 10,
+      countInStock: 20,
+      description: 'A popular shorts',
+    },
+    {
+      name: 'Classic jainga',
+      slug: 'classic-jainga',
+      category: 'Pants',
+      image: '/images/sexy.jpg',
+      price: 30,
+      brand: 'Casely',
+      rating: 4.5,
+      numReviews: 14,
+      countInStock: 21,
+      description: 'A popular jainga',
+    }
   ],
 };
 export default data;
