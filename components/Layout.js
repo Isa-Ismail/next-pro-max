@@ -1,21 +1,21 @@
-import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'  // Link is a component from Material UI
 import { AppBar, Typography, Toolbar, Container } from '@material-ui/core'
 import useStyles from '../utils/styles'
-
+import { FaBeer, FaShoppingCart } from 'react-icons/fa'
 const Layout = ({children}) => {
     const classes = useStyles();
     return (
         <div>
             <Head>
-                <title>Next Project</title>
+                <title>amazona</title>
             </Head>
             <AppBar position = 'static' className = {classes.navbar}>
                 <Toolbar>
                     <Typography className = {classes.brand} variant = 'h6'><Link href = '/'><a>amazona</a></Link></Typography>
-                    <Typography variant = 'h6'><Link href = '/news'><a>cart</a></Link></Typography>
-                    <Typography variant = 'h6'><Link href = '/news'><a>Login</a></Link></Typography>
+                    <div className = {classes.grow}></div>
+                    <Typography variant = 'h6'><Link href = '/news'><a><FaShoppingCart /></a></Link></Typography>
+                    <Typography className = {classes.margin} variant = 'h6'><Link href = '/news'><a>Login</a></Link></Typography>
                 </Toolbar>
             </AppBar>
             <Container className ={classes.main}>

@@ -18,6 +18,12 @@ const useStyles = makeStyles({
         '&:hover': {
             color: 'cyan'
         }
+    },
+    grow: {
+        flexGrow: 1
+    },
+    margin: {
+        marginLeft: '1.5rem'
     }
 })
 

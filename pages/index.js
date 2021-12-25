@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Grid, Typography, Card, CardActionArea, CardMedia, CardContent, CardActions, Button } from "@material-ui/core"
 import Layout from "../components/Layout"
 import data from "../utils/data"
+import Link from "next/link"
 
 const Home = () => {
 
@@ -13,9 +14,11 @@ const Home = () => {
         return (
           <Grid item md = {3} key = {product.name}>
             <Card>
+              <Link href = {`/products/${product.slug}`}>
               <CardActionArea>
                 <CardMedia component = "img" image = {product.image} title = {product.name} />
               </CardActionArea>
+              </Link>
               <CardContent>
                 <Typography gutterBottom variant = "h5">{product.name}</Typography>
               </CardContent>
