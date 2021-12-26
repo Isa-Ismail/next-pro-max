@@ -3,12 +3,13 @@ import Link from 'next/link'  // Link is a component from Material UI
 import { AppBar, Typography, Toolbar, Container } from '@material-ui/core'
 import useStyles from '../utils/styles'
 import { FaBeer, FaShoppingCart } from 'react-icons/fa'
-const Layout = ({children}) => {
+const Layout = ({title ,children, description}) => {
     const classes = useStyles();
     return (
         <div>
             <Head>
-                <title>amazona</title>
+                <title>{title ? `${title} - Next Amazona` : 'Next Amazona'}</title>
+                {description && <meta name="description" content={description}></meta>}
             </Head>
             <AppBar position = 'static' className = {classes.navbar}>
                 <Toolbar>

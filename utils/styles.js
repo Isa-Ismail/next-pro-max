@@ -24,6 +24,10 @@ const useStyles = makeStyles({
     },
     margin: {
         marginLeft: '1.5rem'
+    },
+    card: {
+        maxWidth: '350px',
+        margin: '2rem'
     }
 })
 

@@ -104,8 +104,8 @@ const data = {
       description: 'A popular shorts',
     },
     {
-      name: 'Classic jainga',
-      slug: 'classic-jainga',
+      name: 'Hot shorts',
+      slug: 'hot-shorts',
       category: 'Pants',
       image: '/images/sexy.jpg',
       price: 30,
@@ -113,7 +113,7 @@ const data = {
       rating: 4.5,
       numReviews: 14,
       countInStock: 21,
-      description: 'A popular jainga',
+      description: 'A hot short',
     }
   ],
 };
