@@ -23,7 +23,7 @@ const Home = () => {
               </CardContent>
               <CardActions>
                 <Typography variant = "h6">${product.price}</Typography>
-                <Button size = "medium" style = {{ marginLeft: '8rem', backgroundColor: 'wheat', color: '#203040'}}>Add to cart</Button>
+                <Button size = "medium" variant = 'contained' color= 'secondary' style = {{ marginLeft: '7rem'}}>Add to cart</Button>
               </CardActions>
             </Card>
           </Grid>
