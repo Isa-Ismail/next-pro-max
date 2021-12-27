@@ -19,11 +19,11 @@ const Home = () => {
               </CardActionArea>
               </Link>
               <CardContent>
-                <Typography gutterBottom variant = "h5">{product.name}</Typography>
+                <Typography gutterBottom variant = "h1">{product.name}</Typography>
               </CardContent>
               <CardActions>
-                <Typography variant = "h6">${product.price}</Typography>
-                <Button size = "medium" variant = 'contained' color= 'secondary' style = {{ marginLeft: '7rem'}}>Add to cart</Button>
+                <Typography variant = "h2">${product.price}</Typography>
+                <Button size = "medium" variant = 'contained' color= 'primary' style = {{ marginLeft: '7rem'}}>Add to cart</Button>
               </CardActions>
             </Card>
           </Grid>

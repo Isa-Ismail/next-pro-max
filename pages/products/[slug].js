@@ -30,21 +30,21 @@ const Product = () => {
                     </Grid>
                     <Grid item md ={3}>
                         <Card>
-                        <Typography variant = 'h6'>product description</Typography>
-                        <Typography variant = 'h7'>name - {product.name}</Typography><br/>
-                        <Typography variant = 'h7'>brand - {product.brand}</Typography><br/>
-                        <Typography variant = 'h7'>description - {product.description}</Typography><br/>
-                        <Typography variant = 'h7'>total reviews - {product.numReviews}</Typography><br/>
+                        <Typography variant = 'h1'>product description</Typography>
+                        <Typography variant = 'h2'>name - {product.name}</Typography>
+                        <Typography variant = 'h2'>brand - {product.brand}</Typography>
+                        <Typography variant = 'h2'>description - {product.description}</Typography>
+                        <Typography variant = 'h2'>total reviews - {product.numReviews}</Typography>
                         </Card>
                     </Grid>
                     <Grid item md ={3}>
                         <Card>
                             <CardContent>
-                                <Typography variant = 'h6'>price - {product.price}</Typography>
-                                <Typography variant = 'h6'>status - {product.countInStock>0?'In stock':'Out of stock'}</Typography>
+                                <Typography variant = 'h2'>price - {product.price}</Typography>
+                                <Typography variant = 'h2'>status - {product.countInStock>0?'In stock':'Out of stock'}</Typography>
                             </CardContent>
                             <CardActions>
-                                <Button onClick = {() => {}} variant = 'contained' color = 'secondary'>Add to cart</Button>
+                                <Button onClick = {() => {}} variant = 'contained' color = 'primary'>Add to cart</Button>
                             </CardActions>
                         </Card>
                     </Grid>
