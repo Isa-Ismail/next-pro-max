@@ -2,9 +2,9 @@ import { Grid, Typography, Card, CardActionArea, CardMedia, CardContent, CardAct
 import Layout from "../components/Layout"
 import data from "../utils/data"
 import Link from "next/link"
-
+import useStyles from "../utils/styles"
 const Home = () => {
-
+ const classes = useStyles()
   return (
   <Layout>
     <Typography variant = "h3">Products</Typography>
@@ -23,7 +23,8 @@ const Home = () => {
               </CardContent>
               <CardActions>
                 <Typography variant = "h2">${product.price}</Typography>
-                <Button size = "medium" variant = 'contained' color= 'primary' style = {{ marginLeft: '7rem'}}>Add to cart</Button>
+                <div className = {classes.grow}></div>
+                <Button size = "medium" variant = 'contained' color= 'primary'><Typography>Add to cart</Typography></Button>
               </CardActions>
             </Card>
           </Grid>

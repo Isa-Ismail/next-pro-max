@@ -16,7 +16,7 @@ const Layout = ({title ,children, description}) => {
           h2: {
             fontSize: '1.4rem',
             fontWeight: 400,
-            margin: '.3rem ',
+            margin: '.3rem 0',
             marginLeft: '.5rem'
           }
         },
