@@ -14,7 +14,7 @@ const Layout = ({title ,children, description}) => {
             marginBottom: '.5rem'
           },
           h2: {
-            fontSize: '1.4rem',
+            fontSize: '1rem',
             fontWeight: 400,
             margin: '.3rem 0',
             marginLeft: '.5rem'
@@ -43,7 +43,7 @@ const Layout = ({title ,children, description}) => {
                 <Toolbar>
                     <Typography className = {classes.brand} variant = 'h6'><Link href = '/'><a style = {{color: 'white'}}>amazona</a></Link></Typography>
                     <div className = {classes.grow}></div>
-                    <Typography variant = 'h6'><Link href = '/news'><a style = {{color: 'white'}}><FaShoppingCart /></a></Link></Typography>
+                    <Typography variant = 'h6'><Link href = '/cart'><a style = {{color: 'white'}}><FaShoppingCart /></a></Link></Typography>
                     <Typography className = {classes.margin} variant = 'h6'><Link href = '/news'><a style = {{color: 'white'}}>Login</a></Link></Typography>
                 </Toolbar>
             </AppBar>

@@ -3,7 +3,6 @@ import { useRouter } from "next/router"
 import Layout from "../../components/Layout"
 import data from "../../utils/data"
 import useStyles from "../../utils/styles"
-import Link from "next/link"
 
 const Product = () => {
     const router = useRouter()
@@ -14,7 +13,7 @@ const Product = () => {
         <>
             { !product ? (<Typography>Product not found</Typography>) :
              <Layout title = {product.name} description = {product.description}>
-                <Link href = '/'><a>Back to products</a></Link>
+                <div>
                 <Grid container spacing = {1}>
                     <Grid item md = {6}>
                         <Card>
@@ -40,8 +39,8 @@ const Product = () => {
                     <Grid item md ={3}>
                         <Card>
                             <CardContent>
-                                <Typography variant = 'h2'>price - {product.price}</Typography>
-                                <Typography variant = 'h2'>status - {product.countInStock>0?'In stock':'Out of stock'}</Typography>
+                                <Typography variant = 'h1'>price - ${product.price}</Typography>
+                                <Typography variant = 'h1'>status - {product.countInStock>0?'In stock':'Out of stock'}</Typography>
                             </CardContent>
                             <CardActions>
                                 <Button onClick = {() => {}} variant = 'contained' color = 'primary'>Add to cart</Button>
@@ -50,6 +49,7 @@ const Product = () => {
                     </Grid>
 
                 </Grid>
+                </div>
              </Layout>
              }
         </>

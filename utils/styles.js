@@ -6,6 +6,7 @@ const useStyles = makeStyles({
         padding: '.3rem',
     },
     main: {
+        padding: '1rem',
         minHeight: '80vh'
     },
     footer: {
