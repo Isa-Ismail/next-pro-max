@@ -1,10 +1,16 @@
 import Head from 'next/head'
 import Link from 'next/link'  // Link is a component from Material UI
-import { AppBar, Typography, Toolbar, Container, createMuiTheme, ThemeProvider, CssBaseline } from '@material-ui/core'
+import { AppBar, Typography, Toolbar, Container, createTheme, ThemeProvider, CssBaseline, Switch } from '@material-ui/core'
 import useStyles from '../utils/styles'
 import { FaBeer, FaShoppingCart } from 'react-icons/fa'
+import { useContext } from 'react'
+import { Store } from '../utils/store'
+
 const Layout = ({title ,children, description}) => {
-    const theme = createMuiTheme({
+  const {state, dispatch} = useContext(Store)
+  const { darkMode } = state
+
+    const theme = createTheme({
         typography: {
           h1: {
             fontSize: '1.6rem',
@@ -21,7 +27,7 @@ const Layout = ({title ,children, description}) => {
           }
         },
         palette: {
-        //   type: darkMode ? 'dark' : 'light',
+          type: darkMode ? 'dark' : 'light',
           primary: {
             main: '#f0c000',
           },
@@ -43,6 +49,7 @@ const Layout = ({title ,children, description}) => {
                 <Toolbar>
                     <Typography className = {classes.brand} variant = 'h6'><Link href = '/'><a style = {{color: 'white'}}>amazona</a></Link></Typography>
                     <div className = {classes.grow}></div>
+                    <Switch checked = {darkMode} onChange = {() => dispatch({type: 'TOGGLE_DARK_MODE'})} />
                     <Typography variant = 'h6'><Link href = '/cart'><a style = {{color: 'white'}}><FaShoppingCart /></a></Link></Typography>
                     <Typography className = {classes.margin} variant = 'h6'><Link href = '/news'><a style = {{color: 'white'}}>Login</a></Link></Typography>
                 </Toolbar>
