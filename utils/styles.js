@@ -3,11 +3,12 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles({
     navbar:{
         backgroundColor: '#203040',
-        padding: '.3rem',
+        padding: '.1rem',
     },
     main: {
         padding: '1rem',
-        minHeight: '80vh'
+        minHeight: '80vh',
+        maxWidth: '170vh'
     },
     footer: {
         textAlign: 'center'

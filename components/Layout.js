@@ -5,6 +5,7 @@ import useStyles from '../utils/styles'
 import { FaBeer, FaShoppingCart } from 'react-icons/fa'
 import { useContext } from 'react'
 import { Store } from '../utils/store'
+import Cookies from 'js-cookie'
 
 const Layout = ({title ,children, description}) => {
   const {state, dispatch} = useContext(Store)
@@ -36,6 +37,11 @@ const Layout = ({title ,children, description}) => {
           },
         },
       })
+    const darkModeSwitch = () => {
+        dispatch({type: 'TOGGLE_DARK_MODE'})
+        const newDarkMode = !darkMode
+        Cookies.set('darkMode', newDarkMode ? 'ON' : 'OFF')
+    } 
     const classes = useStyles();
     return (
         <div>
@@ -49,7 +55,7 @@ const Layout = ({title ,children, description}) => {
                 <Toolbar>
                     <Typography className = {classes.brand} variant = 'h6'><Link href = '/'><a style = {{color: 'white'}}>amazona</a></Link></Typography>
                     <div className = {classes.grow}></div>
-                    <Switch checked = {darkMode} onChange = {() => dispatch({type: 'TOGGLE_DARK_MODE'})} />
+                    <Switch checked = {darkMode} onChange = {darkModeSwitch} />
                     <Typography variant = 'h6'><Link href = '/cart'><a style = {{color: 'white'}}><FaShoppingCart /></a></Link></Typography>
                     <Typography className = {classes.margin} variant = 'h6'><Link href = '/news'><a style = {{color: 'white'}}>Login</a></Link></Typography>
                 </Toolbar>

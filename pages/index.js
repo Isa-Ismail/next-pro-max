@@ -11,11 +11,11 @@ const Home = () => {
     <Grid container spacing = {3}>
       {data.products.map((product) => {
         return (
-          <Grid item md = {3} key = {product.name}>
+          <Grid item md = {4} key = {product.name}>
             <Card>
               <Link href = {`/products/${product.slug}`}>
               <CardActionArea>
-                <CardMedia height="350" component = "img" image = {product.image} title = {product.name} />
+                <CardMedia height="300" component = "img" image = {product.image} title = {product.name} />
               </CardActionArea>
               </Link>
               <CardContent>
