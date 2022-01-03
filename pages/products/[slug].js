@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import Layout from "../../components/Layout"
 import data from "../../utils/data"
 import useStyles from "../../utils/styles"
+import { Rating } from "@material-ui/lab"
 
 const Product = () => {
     const router = useRouter()
@@ -33,6 +34,7 @@ const Product = () => {
                         <Typography variant = 'h2'>name - {product.name}</Typography>
                         <Typography variant = 'h2'>brand - {product.brand}</Typography>
                         <Typography variant = 'h2'>description - {product.description}</Typography>
+                        <Rating name = "read-only" value = {product.rating} readOnly precision={0.1} />
                         <Typography variant = 'h2'>total reviews - {product.numReviews}</Typography>
                         </Card>
                     </Grid>
