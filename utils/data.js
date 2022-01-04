@@ -38,7 +38,7 @@ const data = {
       featuredImage: '/images/banner2.jpg',
       price: 80,
       brand: 'Adidas',
-      rating: 4.2,
+      rating: 4.3,
       numReviews: 10,
       countInStock: 20,
       description: 'A popular shirt',
