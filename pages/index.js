@@ -7,7 +7,7 @@ const Home = () => {
  const classes = useStyles()
   return (
   <Layout>
-    <Typography variant = "h3">Products</Typography>
+    <Typography variant = "h1">Products</Typography>
     <Grid container spacing = {3}>
       {data.products.map((product) => {
         return (
@@ -24,7 +24,7 @@ const Home = () => {
               <CardActions>
                 <Typography variant = "h2">${product.price}</Typography>
                 <div className = {classes.grow}></div>
-                <Button size = "medium" variant = 'contained' color= 'primary'><Typography>Add to cart</Typography></Button>
+                <Button size = "medium" variant = 'contained' color= 'primary'><Typography variant = 'h2'>Add to cart</Typography></Button>
               </CardActions>
             </Card>
           </Grid>

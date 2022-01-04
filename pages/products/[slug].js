@@ -22,9 +22,9 @@ const Product = () => {
                                 <CardMedia height="350" component = "img" image = {product.image} title = {product.name} />
                             </CardActionArea>
                             <CardContent>
-                                <Typography variant = "h6">{product.name}</Typography>
-                                <Typography variant = "h7">brand - {product.brand}</Typography><br/>
-                                <Typography variant = "h7">{product.description}</Typography>
+                                <Typography variant = "h1">{product.name}</Typography>
+                                <Typography variant = "h2">brand - {product.brand}</Typography><br/>
+                                <Typography variant = "h2">{product.description}</Typography>
                             </CardContent>
                         </Card>
                     </Grid>

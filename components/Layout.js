@@ -14,6 +14,7 @@ const Layout = ({title ,children, description}) => {
     const theme = createTheme({
         typography: {
           h1: {
+            fontFamily: 'Changa',
             fontSize: '1.6rem',
             fontWeight: 400,
             margin: '.3rem 0',
@@ -21,6 +22,7 @@ const Layout = ({title ,children, description}) => {
             marginBottom: '.5rem'
           },
           h2: {
+            fontFamily: 'Changa',
             fontSize: '1rem',
             fontWeight: 400,
             margin: '.3rem 0',
