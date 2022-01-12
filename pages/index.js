@@ -6,7 +6,7 @@ import useStyles from "../utils/styles"
 const Home = () => {
  const classes = useStyles()
   return (
-  <Layout>
+  <Layout title = 'Home page'>
     <Typography variant = "h1">Products</Typography>
     <Grid container spacing = {3}>
       {data.products.map((product) => {
