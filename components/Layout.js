@@ -59,7 +59,7 @@ const Layout = ({title ,children, description}) => {
                     <div className = {classes.grow}></div>
                     <Switch checked = {darkMode} onChange = {darkModeSwitch} />
                     <Typography variant = 'h6'><Link href = '/cart'><a style = {{color: 'white'}}><FaShoppingCart /></a></Link></Typography>
-                    <Typography className = {classes.margin} variant = 'h6'><Link href = '/news'><a style = {{color: 'white'}}>Login</a></Link></Typography>
+                    <Typography className = {classes.margin} variant = 'h6'><Link href = '/login'><a style = {{color: 'white'}}>Login</a></Link></Typography>
                 </Toolbar>
             </AppBar>
             <Container className ={classes.main}>
