@@ -13,6 +13,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Layout from '../../components/Layout';
+import { Store } from '../../utils/store';
+import { useContext } from 'react';
 
 function Copyright() {
   return (
@@ -60,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const classes = useStyles();
+  const {state, dispatch} = useContext(Store)
 
   return (
     <Layout>
