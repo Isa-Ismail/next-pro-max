@@ -15,10 +15,10 @@ const useStyles = makeStyles({
     },
     brand: {
         color: '#fff',
-        fontSize: '1.5rem',
+        fontSize: '2rem',
         textDecoration: 'none',
         '&:hover': {
-            color: 'cyan'
+            color: '#f0c000'
         }
     },
     grow: {
