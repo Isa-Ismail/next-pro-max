@@ -2,11 +2,10 @@ import Head from 'next/head'
 import Link from 'next/link'  // Link is a component from Material UI
 import { AppBar, Typography, Toolbar, Container, createTheme, ThemeProvider, CssBaseline, Switch } from '@material-ui/core'
 import useStyles from '../utils/styles'
-import { FaBeer, FaShoppingCart } from 'react-icons/fa'
+import { FaShoppingCart } from 'react-icons/fa'
 import { useContext } from 'react'
 import { Store } from '../utils/store'
 import Cookies from 'js-cookie'
-
 const Layout = ({title ,children, description}) => {
   const {state, dispatch} = useContext(Store)
   const { darkMode } = state

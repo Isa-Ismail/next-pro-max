@@ -6,7 +6,7 @@ import useStyles from "../../utils/styles"
 import { Rating } from "@material-ui/lab"
 import TextField from '@material-ui/core/TextField';
 import { useState } from "react"
-
+import Modal from '../../components/Modal'
 const Product = () => {
     const router = useRouter()
     const { slug } = router.query
@@ -25,6 +25,9 @@ const Product = () => {
                             <CardActionArea>
                                 <CardMedia height="550" component = "img" image = {product.image} title = {product.name} />
                             </CardActionArea>
+                            <CardActions>
+                                <Modal slug = {slug} product = {product}/>
+                            </CardActions>
                         </Card>
                     </Grid>
                     <Grid item md ={3}>
