@@ -7,13 +7,16 @@ import { Rating } from "@material-ui/lab"
 import TextField from '@material-ui/core/TextField';
 import { useState } from "react"
 import Modal from '../../components/Modal'
-const Product = () => {
-    const router = useRouter()
-    const { slug } = router.query
-    const product = data.products.find(product => product.slug === slug)
+import db from '../../utils/db'
+import Product from '../../models/Product'
+
+const IndiProduct = ({product}) => {
+
+    const {slug} = useRouter().query
     const classes = useStyles()
     const [comment, setComment] = useState('')
-
+    const [value, setValue] = useState(0)
+    console.log(value)
     return (
         <>
             { !product ? (<Typography>Product not found</Typography>) :
@@ -54,18 +57,26 @@ const Product = () => {
                     <Grid item md = {12} spacing = {1}>
                                     <Card>
                                         <CardContent>
-                                        <TextField
-                                        id="outlined-multiline-flexible"
-                                        label="Review Product"
-                                        style={{width: '50rem'}}
-                                        multiline
-                                        maxRows={4}
-                                        value = {comment}
-                                        onChange = { (e)=> setComment(e.target.value) }
-                                        variant="outlined"
-                                        /><br/><br/>
-                                        <Button variant = 'contained' color = 'primary'>Submit</Button>
+                                            <TextField
+                                            id="outlined-multiline-flexible"
+                                            label="Review Product"
+                                            style={{width: '50rem'}}
+                                            multiline
+                                            maxRows={4}
+                                            value = {comment}
+                                            onChange = { (e)=> setComment(e.target.value) }
+                                            variant="outlined"
+                                            /><br/><br/>
+                                            <Button variant = 'contained' color = 'primary'>Submit</Button>
                                         </CardContent>
+                                        <CardActions>
+                                            <Typography variant = 'h1'>Rate this product</Typography>
+                                            <Rating
+                                            name="simple-controlled"
+                                            value={value}
+                                            onChange={(e) => {setValue(e.target.value)}}
+                                            />
+                                        </CardActions>
                                     </Card>
                     </Grid>
                     <Grid item md = {12} spacing = {1}>
@@ -88,4 +99,18 @@ const Product = () => {
         </>
     )
 }
-export default Product
+export default IndiProduct
+
+export const getServerSideProps = async (context) => {
+
+    const {params} = context
+    const {slug} = params
+    await db.connect()
+    const product = await Product.findOne({ slug }).lean()
+    await db.disconnect()
+    return {
+      props: {
+        product: db.convertDocToObj(product)
+      }
+    }
+  }

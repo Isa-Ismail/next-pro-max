@@ -54,7 +54,7 @@ const Layout = ({title ,children, description}) => {
             <CssBaseline />
             <AppBar position = 'static' className = {classes.navbar}>
                 <Toolbar>
-                    <Typography className = {classes.brand} variant = 'h6'><Link href = '/'><a>amazona</a></Link></Typography>
+                    <Typography className = {classes.brand}><Link href = '/'><a>amazona</a></Link></Typography>
                     <div className = {classes.grow}></div>
                     <Switch checked = {darkMode} onChange = {darkModeSwitch} />
                     <Typography variant = 'h6'><Link href = '/cart'><a style = {{color: 'white'}}><FaShoppingCart /></a></Link></Typography>
