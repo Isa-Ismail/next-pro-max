@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'  // Link is a component from Material UI
-import { AppBar, Typography, Toolbar, Container, createTheme, ThemeProvider, CssBaseline, Switch } from '@material-ui/core'
+import { AppBar, Typography, Toolbar, Container, Badge, createTheme, ThemeProvider, CssBaseline, Switch } from '@material-ui/core'
 import useStyles from '../utils/styles'
 import { FaShoppingCart } from 'react-icons/fa'
 import { useContext } from 'react'
@@ -57,7 +57,10 @@ const Layout = ({title ,children, description}) => {
                     <Typography className = {classes.brand}><Link href = '/'><a>amazona</a></Link></Typography>
                     <div className = {classes.grow}></div>
                     <Switch checked = {darkMode} onChange = {darkModeSwitch} />
-                    <Typography variant = 'h6'><Link href = '/cart'><a style = {{color: 'white'}}><FaShoppingCart /></a></Link></Typography>
+                    <Typography variant = 'h6'><Link href = '/cart'><a style = {{color: 'white'}}>
+                        <Badge color = 'primary' badgeContent={2}>
+                        <FaShoppingCart />
+                        </Badge></a></Link></Typography>
                     <Typography className = {classes.margin} variant = 'h6'><Link href = '/login'><a style = {{color: 'white'}}>Login</a></Link></Typography>
                 </Toolbar>
             </AppBar>

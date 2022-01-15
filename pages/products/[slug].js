@@ -5,18 +5,31 @@ import data from "../../utils/data"
 import useStyles from "../../utils/styles"
 import { Rating } from "@material-ui/lab"
 import TextField from '@material-ui/core/TextField';
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Modal from '../../components/Modal'
 import db from '../../utils/db'
 import Product from '../../models/Product'
-
+import { Store } from "../../utils/store"
+import axios from "axios"
 const IndiProduct = ({product}) => {
 
+    const router = useRouter()
     const {slug} = useRouter().query
     const classes = useStyles()
     const [comment, setComment] = useState('')
     const [value, setValue] = useState(0)
-    console.log(value)
+    const {state, dispatch} = useContext(Store)
+    const addToCartHandler = async () => {
+        const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+        const quantity = existItem ? existItem.quantity + 1 : 1;
+        const { data } = await axios.get(`/api/products/${product._id}`);
+        if (data.countInStock < quantity) {
+          window.alert('Sorry. Product is out of stock');
+          return;
+        }
+        dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+        router.push('/cart');
+      };
     return (
         <>
             { !product ? (<Typography>Product not found</Typography>) :
@@ -50,7 +63,7 @@ const IndiProduct = ({product}) => {
                                 <Typography variant = 'h1'>status - {product.countInStock>0?'In stock':'Out of stock'}</Typography>
                             </CardContent>
                             <CardActions>
-                                <Button onClick = {() => {}} variant = 'contained' color = 'primary'>Add to cart</Button>
+                                <Button onClick = {addToCartHandler} variant = 'contained' color = 'primary'>Add to cart</Button>
                             </CardActions>
                         </Card>
                     </Grid>
@@ -79,7 +92,7 @@ const IndiProduct = ({product}) => {
                                         </CardActions>
                                     </Card>
                     </Grid>
-                    <Grid item md = {12} spacing = {1}>
+                    <Grid item md = {12}>
                         <Card>
                             <CardContent>
                                 <Typography variant = 'h1'>Reviews</Typography>

@@ -4,7 +4,10 @@ import {createContext, useReducer} from 'react'
 export const Store = createContext()
 
 const initialState = {
-    darkMode: Cookies.get('darkMode') === 'ON'
+    darkMode: Cookies.get('darkMode') === 'ON',
+    cart:{
+        cartItems:[]
+    }
 }
 
 const reducer = (state, action) => {
