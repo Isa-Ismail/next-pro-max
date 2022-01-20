@@ -4,9 +4,10 @@ import Link from "next/link"
 import useStyles from "../utils/styles"
 import db from '../utils/db'
 import Product from '../models/Product'
+import axios from "axios"
 
 const Home = ({products}) => {
- const classes = useStyles()
+  const classes = useStyles()
   return (
   <Layout title = 'Home page' description = 'Browse your favorite shirts and other products online and get delivered at your comfort zone in time and for money you can afford'>
     <Typography variant = "h1">Products</Typography>
