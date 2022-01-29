@@ -18,7 +18,7 @@ const Home = ({products}) => {
             <Card>
               <Link href = {`/products/${product.slug}`}>
               <CardActionArea>
-                <CardMedia style = {{height: '340px'}} component = "img" image = {product.image} title = {product.name} />
+                <CardMedia className = '!h-[400px]' component = "img" image = {product.image} title = {product.name} />
               </CardActionArea>
               </Link>
               <CardContent>
