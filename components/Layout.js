@@ -6,10 +6,12 @@ import { FaShoppingCart } from 'react-icons/fa'
 import { useContext } from 'react'
 import { Store } from '../utils/store'
 import Cookies from 'js-cookie'
-const Layout = ({title ,children, description}) => {
-  const {state, dispatch} = useContext(Store)
-  const { darkMode } = state
 
+const Layout = ({title ,children, description}) => {
+
+  const {state, dispatch} = useContext(Store)
+  const { darkMode, cart } = state
+  
     const theme = createTheme({
         typography: {
           h1: {
