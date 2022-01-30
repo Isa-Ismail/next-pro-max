@@ -12,11 +12,24 @@ const initialState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'TOGGLE_DARK_MODE':
-            return {
-                ...state,
-                darkMode: !state.darkMode
-            }
+            case 'TOGGLE_DARK_MODE':
+                return {
+                    ...state,
+                    darkMode: !state.darkMode
+                }
+            case 'CART_ADD_ITEM': {
+                const newItem = action.payload;
+                const existItem = state.cart.cartItems.find(
+                  (item) => item._id === newItem._id
+                );
+                const cartItems = existItem
+                  ? state.cart.cartItems.map((item) =>
+                      item.name === existItem.name ? newItem : item
+                    )
+                  : [...state.cart.cartItems, newItem];
+                Cookies.set('cartItems', JSON.stringify(cartItems));
+                return { ...state, cart: { ...state.cart, cartItems } };
+              }
         default:
             return state
     }

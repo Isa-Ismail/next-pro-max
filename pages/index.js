@@ -1,4 +1,5 @@
 import { Grid, Typography, Card, CardActionArea, CardMedia, CardContent, CardActions, Button } from "@material-ui/core"
+import { Rating } from "@material-ui/lab"
 import Layout from "../components/Layout"
 import Link from "next/link"
 import useStyles from "../utils/styles"
@@ -18,11 +19,12 @@ const Home = ({products}) => {
             <Card>
               <Link href = {`/products/${product.slug}`}>
               <CardActionArea>
-                <CardMedia className = '!h-[400px]' component = "img" image = {product.image} title = {product.name} />
+                <CardMedia className = '!h-[300px]' component = "img" image = {product.image} title = {product.name} />
               </CardActionArea>
               </Link>
               <CardContent>
                 <Typography gutterBottom variant = "h1">{product.name}</Typography>
+                <Rating name = "read-only" value = {product.rating} readOnly precision={0.1} />
               </CardContent>
               <CardActions>
                 <Typography variant = "h2">${product.price}</Typography>
