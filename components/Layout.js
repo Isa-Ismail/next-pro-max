@@ -59,10 +59,15 @@ const Layout = ({title ,children, description}) => {
                     <Typography className = {classes.brand}><Link href = '/'><a>amazona</a></Link></Typography>
                     <div className = {classes.grow}></div>
                     <Switch checked = {darkMode} onChange = {darkModeSwitch} />
-                    <Typography variant = 'h6'><Link href = '/cart'><a style = {{color: 'white'}}>
-                        <Badge color = 'primary' badgeContent={2}>
-                        <FaShoppingCart />
-                        </Badge></a></Link></Typography>
+                    <Typography variant = 'h6'>
+                      <Link href = '/cart'>
+                        <a style = {{color: 'white'}}>
+                         <Badge color = 'primary' badgeContent={cart.cartItems.length}>
+                          <FaShoppingCart />
+                         </Badge>
+                        </a>
+                      </Link>
+                    </Typography>
                     <Typography className = {classes.margin} variant = 'h6'><Link href = '/login'><a style = {{color: 'white'}}>Login</a></Link></Typography>
                 </Toolbar>
             </AppBar>
