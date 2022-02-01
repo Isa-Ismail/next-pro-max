@@ -1,5 +1,5 @@
 import Layout from "../components/Layout"
-import { Typography, Card, Grid, Button, Select, MenuItem } from "@material-ui/core"
+import { Typography, Card, Grid, Button, Select, MenuItem, List, ListItem } from "@material-ui/core"
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,15 +11,21 @@ import Paper from '@material-ui/core/Paper';
 import { useContext } from "react";
 import { Store } from "../utils/store";
 import { FaTrash } from "react-icons/fa";
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles({
     table: {
-      minWidth: 650,
+      Width: 650,
     },
   })
 
 const Cart = () => {
+    const router = useRouter ()
     const {state, dispatch} = useContext (Store)
+
+    const checkoutHandler = () => {
+        router.push('/shipping');
+    }
 
     const classes = useStyles()
 
@@ -35,7 +41,7 @@ const Cart = () => {
                 <Grid item md = {8}>
                     <Card className = '!to-red-100'>
                     <Table className={classes.table} aria-label="simple table">
-                        <TableHead>
+                        <TableHead className = '!bg-lime-600' >
                             <TableRow>
                                 <TableCell className = '!text-xl' align="right">product</TableCell>
                                 <TableCell className = '!text-xl' align="right">Quantity</TableCell>
@@ -68,6 +74,29 @@ const Cart = () => {
                             }
                         </TableBody>
                     </Table>
+                    </Card>
+                </Grid>
+                <Grid item md={4} xs={12}>
+                    <Card>
+                    <List>
+                        <ListItem>
+                        <Typography variant="h1">
+                            Subtotal ({state.cart.cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
+                            items) : $
+                            {state.cart.cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                        </Typography>
+                        </ListItem>
+                        <ListItem>
+                        <Button
+                            onClick={checkoutHandler}
+                            variant="contained"
+                            color="primary"
+                            fullWidth
+                        >
+                            Check Out
+                        </Button>
+                        </ListItem>
+                    </List>
                     </Card>
                 </Grid>
             </Grid>

@@ -67,7 +67,7 @@ const IndiProduct = ({product}) => {
                             </CardActions>
                         </Card>
                     </Grid>
-                    <Grid item md = {12} spacing = {1}>
+                    <Grid item md = {12}>
                                     <Card>
                                         <CardContent>
                                             <TextField
