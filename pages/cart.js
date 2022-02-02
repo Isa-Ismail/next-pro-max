@@ -12,6 +12,7 @@ import { useContext } from "react";
 import { Store } from "../utils/store";
 import { FaTrash } from "react-icons/fa";
 import { useRouter } from 'next/router'
+import dynamic from "next/dynamic";
 
 const useStyles = makeStyles({
     table: {
@@ -104,4 +105,4 @@ const Cart = () => {
     )
 }
 
-export default Cart
+export default dynamic(() => Promise.resolve(Cart), { ssr: false })
