@@ -14,20 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Layout from '../components/Layout';
 import { Store } from '../utils/store';
-import { useContext } from 'react';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import { useState, useContext } from 'react';
+import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,6 +52,19 @@ export default function SignInSide() {
   const classes = useStyles();
   const {state, dispatch} = useContext(Store)
 
+  const [email, setEmail] = useState ('')
+  const [password, setPass] = useState ('')
+  console.log(email, password)
+  const submitHandler = async (e) => {
+    e.preventDefault()
+    try {
+      const { data } = await axios.post('api/user/login', {email, password})
+      console.log(data)
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
   return (
     <Layout title = 'Login-page'>
     <Grid container component="main" className={classes.root}>
@@ -77,7 +78,7 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} onSubmit= {submitHandler} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
@@ -88,6 +89,8 @@ export default function SignInSide() {
               name="email"
               autoComplete="email"
               autoFocus
+              value = {email}
+              onChange={(e)=> setEmail(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -99,6 +102,8 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value = {password}
+              onChange={(e)=> setPass(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -126,7 +131,6 @@ export default function SignInSide() {
               </Grid>
             </Grid>
             <Box mt={5}>
-              <Copyright />
             </Box>
           </form>
         </div>
