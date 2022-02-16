@@ -1,18 +1,18 @@
 import Layout from "../components/Layout"
 import { Typography, Card, Grid, Button, Select, MenuItem, List, ListItem } from "@material-ui/core"
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import { useContext } from "react";
-import { Store } from "../utils/store";
-import { FaTrash } from "react-icons/fa";
+import { makeStyles } from '@material-ui/core/styles'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import Paper from '@material-ui/core/Paper'
+import { useContext } from "react"
+import { Store } from "../utils/store"
+import { FaTrash } from "react-icons/fa"
 import { useRouter } from 'next/router'
-import dynamic from "next/dynamic";
+import dynamic from "next/dynamic"
 
 const useStyles = makeStyles({
     table: {
@@ -25,7 +25,7 @@ const Cart = () => {
     const {state, dispatch} = useContext (Store)
 
     const checkoutHandler = () => {
-        router.push('/shipping');
+        router.push('/shipping')
     }
 
     const classes = useStyles()

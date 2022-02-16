@@ -25,20 +25,20 @@ const reducer = (state, action) => {
                 
                 const cartItems = existItem ? 
                 state.cart.cartItems.map((item) => item.name === existItem.name ? newItem : item )
-                : [...state.cart.cartItems, newItem];
+                : [...state.cart.cartItems, newItem]
                 
                 Cookies.set('cartItems', JSON.stringify(cartItems))
                 
                 return { ...state, cart: { ...state.cart, cartItems } }
-              }
+                }
             case 'REMOVE_ITEM':
-              const cartItems = state.cart.cartItems.filter (item => item._id !== action.payload)
-              Cookies.set('cartItems', JSON.stringify(cartItems))
-              return {
+                const cartItems = state.cart.cartItems.filter (item => item._id !== action.payload)
+                Cookies.set('cartItems', JSON.stringify(cartItems))
+                return {
                  ...state, cart: { ...state.cart, cartItems } 
-              }
-        default:
-            return state
+                }
+            default:
+                return state
     }
 }
 
