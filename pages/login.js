@@ -54,14 +54,13 @@ export default function SignInSide() {
 
   const [email, setEmail] = useState ('')
   const [password, setPass] = useState ('')
-  console.log(email, password)
   const submitHandler = async (e) => {
     e.preventDefault()
     try {
       const { data } = await axios.post('api/user/login', {email, password})
       console.log(data)
     } catch (err) {
-      console.log(err.message)
+      console.log(err)
     }
   }
 
