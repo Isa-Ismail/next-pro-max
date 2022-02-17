@@ -10,8 +10,8 @@ const shipping = () => {
   const {state , dispatch} = useContext( Store )
   const router = useRouter()
   useEffect(() => {
-    if ( !auth ) router.push('/login');
-  },[])
+    if ( !state.userInfo ) router.push('/login');
+  },[state.userInfo])
   return (
   <Layout>
       <Typography variant = 'h1'>Shipping</Typography>

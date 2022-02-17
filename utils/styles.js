@@ -8,10 +8,12 @@ const useStyles = makeStyles({
     main: {
         padding: '1rem',
         minHeight: '80vh',
-        maxWidth: '170vh'
+        maxWidth: '170vh',
+        marginTop: '5rem'
     },
     footer: {
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop: '2rem'
     },
     brand: {
         color: '#fff',
@@ -30,6 +32,9 @@ const useStyles = makeStyles({
     card: {
         maxWidth: '350px',
         margin: '2rem'
+    },
+    navbarbutton: {
+        color: 'white'
     }
 })
 

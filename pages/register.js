@@ -21,7 +21,7 @@ import Cookies from 'js-cookie';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    minheight: '100vh',
   },
   image: {
     backgroundImage: 'url(images/zelda.jpg)',
@@ -60,9 +60,11 @@ export default function SignInSide() {
   }else if(state.userInfo){
     router.push('/')
   }
-
+  const [name, setName] = useState('')
   const [email, setEmail] = useState ('')
   const [password, setPass] = useState ('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+
   const submitHandler = async (e) => {
     e.preventDefault()
     try {
@@ -90,9 +92,22 @@ export default function SignInSide() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
           <form className={classes.form} onSubmit= {submitHandler} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="Name"
+              name="name"
+              autoComplete="name"
+              autoFocus
+              value = {name}
+              onChange={(e)=> setName(e.target.value)}
+            />
             <TextField
               variant="outlined"
               margin="normal"
@@ -119,6 +134,19 @@ export default function SignInSide() {
               value = {password}
               onChange={(e)=> setPass(e.target.value)}
             />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="confirmPassword"
+              label="confirm Password"
+              type="password"
+              id="confirmPassword"
+              autoComplete=""
+              value = {confirmPassword}
+              onChange={(e)=> setConfirmPassword(e.target.value)}
+            />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -139,8 +167,8 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/register" variant="body2">
-                  {"Already have an account? Sign in "}
+                <Link href="/login" variant="body2">
+                  {"Already have an account? Sign in"}
                 </Link>
               </Grid>
             </Grid>

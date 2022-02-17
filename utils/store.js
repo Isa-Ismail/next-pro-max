@@ -4,11 +4,17 @@ import {createContext, useReducer} from 'react'
 export const Store = createContext()
 
 const initialState = {
+
     darkMode: Cookies.get('darkMode') === 'ON',
 
     cart: {
         cartItems: Cookies.get('cartItems') ? JSON.parse(Cookies.get('cartItems')) : []
-    }
+    },
+
+    userInfo: Cookies.get('userInfo')
+    ? JSON.parse(Cookies.get('userInfo'))
+    : null
+
 }
 
 const reducer = (state, action) => {
@@ -36,6 +42,14 @@ const reducer = (state, action) => {
                 Cookies.set('cartItems', JSON.stringify(cartItems))
                 return {
                  ...state, cart: { ...state.cart, cartItems } 
+                }
+            case 'USER_LOGIN':
+                return {
+                    ...state, userInfo: action.payload
+                }
+            case 'SIGN_OUT':
+                return {
+                    ...state, userInfo: null
                 }
             default:
                 return state
