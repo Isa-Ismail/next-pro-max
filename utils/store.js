@@ -47,6 +47,10 @@ const reducer = (state, action) => {
                 return {
                     ...state, userInfo: action.payload
                 }
+            case 'USER_REGISTER':
+                return {
+                    ...state, userInfo: action.payload
+                }
             case 'SIGN_OUT':
                 return {
                     ...state, userInfo: null

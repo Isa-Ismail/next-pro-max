@@ -54,12 +54,6 @@ export default function SignInSide() {
   const router = useRouter()
   const classes = useStyles();
   const {state, dispatch} = useContext(Store)
-
-  if(state.userInfo && state.cart.cartItems.length) {
-    router.push('/shipping')
-  }else if(state.userInfo){
-    router.push('/')
-  }
   const [name, setName] = useState('')
   const [email, setEmail] = useState ('')
   const [password, setPass] = useState ('')
@@ -68,16 +62,21 @@ export default function SignInSide() {
   const submitHandler = async (e) => {
     e.preventDefault()
     try {
-      const { data } = await axios.post('api/users/login', {email, password})
-      dispatch({type: 'USER_LOGIN', payload: data})
-      Cookies.set('userInfo', JSON.stringify(data))
-
+        if(password===confirmPassword){
+            const { data } = await axios.post('api/users/register', {name, email, password})
+            dispatch({type: 'USER_REGISTER', payload: data})
+            Cookies.set('userInfo', JSON.stringify(data))
+        }else{
+            alert('password did not matched')
+        }
       if(state.userInfo && state.cart.cartItems.length>0) {
         router.push('/shipping')
+      }else{
+          router.push('/')
       }
 
     } catch (err) {
-      alert('you fucked up')
+      alert(err.response.data.message)
     }
   }
 
