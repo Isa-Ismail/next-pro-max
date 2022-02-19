@@ -13,6 +13,7 @@ import { Store } from "../utils/store"
 import { FaTrash } from "react-icons/fa"
 import { useRouter } from 'next/router'
 import dynamic from "next/dynamic"
+import { useSnackbar } from "notistack"
 
 const useStyles = makeStyles({
     table: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles({
 const Cart = () => {
     const router = useRouter ()
     const {state, dispatch} = useContext (Store)
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar()
 
     const checkoutHandler = () => {
         router.push('/shipping')
@@ -68,8 +70,11 @@ const Cart = () => {
                                             </TableCell>
                                             <TableCell align="right">{item.price}</TableCell>
                                             <TableCell align="right">{item.price*item.quantity}</TableCell>
-                                            <TableCell><FaTrash onClick={() => dispatch({ type: 'REMOVE_ITEM', payload: item._id})} className = '!ml-12 !cursor-pointer'/></TableCell>
-                                        </TableRow>
+                                            <TableCell><FaTrash onClick={() =>{ 
+                                                enqueueSnackbar('Item removed', {variant: 'warning'})
+                                                dispatch({ type: 'REMOVE_ITEM', payload: item._id})
+                                            }} className = '!ml-12 !cursor-pointer'/></TableCell>
+                                            </TableRow>
                                         )
                                 })
                             }

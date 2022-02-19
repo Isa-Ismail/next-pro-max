@@ -18,6 +18,7 @@ import { useState, useContext } from 'react';
 import axios from 'axios'
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
+import { useSnackbar } from 'notistack';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,6 +55,7 @@ export default function SignInSide() {
   const router = useRouter()
   const classes = useStyles();
   const {state, dispatch} = useContext(Store)
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar()
 
   if(state.userInfo && state.cart.cartItems.length) {
     router.push('/shipping')
@@ -66,16 +68,18 @@ export default function SignInSide() {
   const submitHandler = async (e) => {
     e.preventDefault()
     try {
+
       const { data } = await axios.post('api/users/login', {email, password})
       dispatch({type: 'USER_LOGIN', payload: data})
       Cookies.set('userInfo', JSON.stringify(data))
+      enqueueSnackbar('Login Successful', {variant: 'success'})
 
       if(state.userInfo && state.cart.cartItems.length>0) {
         router.push('/shipping')
       }
 
     } catch (err) {
-      alert('you fucked up')
+      enqueueSnackbar('Invalid credentials', {variant: 'error'})
     }
   }
 
@@ -92,7 +96,7 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} onSubmit= {submitHandler} noValidate>
+          <form className={classes.form} onSubmit= {submitHandler}>
             <TextField
               variant="outlined"
               margin="normal"

@@ -18,7 +18,7 @@ import { useState, useContext } from 'react';
 import axios from 'axios'
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
-
+import { useSnackbar } from 'notistack';
 const useStyles = makeStyles((theme) => ({
   root: {
     minheight: '100vh',
@@ -58,25 +58,26 @@ export default function SignInSide() {
   const [email, setEmail] = useState ('')
   const [password, setPass] = useState ('')
   const [confirmPassword, setConfirmPassword] = useState('')
-
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar()
   const submitHandler = async (e) => {
     e.preventDefault()
     try {
-        if(password===confirmPassword){
+        if(password===confirmPassword && password.length>=6){
             const { data } = await axios.post('api/users/register', {name, email, password})
             dispatch({type: 'USER_REGISTER', payload: data})
             Cookies.set('userInfo', JSON.stringify(data))
+            if(state.userInfo && state.cart.cartItems.length>0) {
+              router.push('/shipping')
+            }else{
+                router.push('/')
+            }
         }else{
-            alert('password did not matched')
+            enqueueSnackbar('Inputs did not meet requirements', {variant: 'error'})
         }
-      if(state.userInfo && state.cart.cartItems.length>0) {
-        router.push('/shipping')
-      }else{
-          router.push('/')
-      }
 
     } catch (err) {
-      alert(err.response.data.message)
+      console.log(err, err.response, err.response.data)
+      enqueueSnackbar(err.response.data.message, {variant: 'error'})
     }
   }
 
@@ -93,7 +94,7 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
-          <form className={classes.form} onSubmit= {submitHandler} noValidate>
+          <form className={classes.form} onSubmit= {submitHandler}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -108,6 +109,7 @@ export default function SignInSide() {
               onChange={(e)=> setName(e.target.value)}
             />
             <TextField
+              type="email"
               variant="outlined"
               margin="normal"
               required

@@ -6,13 +6,15 @@ import { FaShoppingCart, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { useContext } from 'react'
 import { Store } from '../utils/store'
 import Cookies from 'js-cookie'
-
+import { useSnackbar } from 'notistack'
 const Layout = ({title ,children, description}) => {
 
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar()
   const {state, dispatch} = useContext(Store)
   const { darkMode, cart } = state
 
   const signOut = () => {
+    enqueueSnackbar('Logged Out', { variant: 'info'})
     Cookies.remove('userInfo')
     dispatch({type: 'SIGN_OUT'})
   }

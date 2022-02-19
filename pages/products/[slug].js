@@ -11,8 +11,11 @@ import db from '../../utils/db'
 import Product from '../../models/Product'
 import { Store } from "../../utils/store"
 import axios from "axios"
+import { useSnackbar } from 'notistack'
+
 const IndiProduct = ({product}) => {
 
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar()
     const router = useRouter()
     const {slug} = useRouter().query
     const classes = useStyles()
@@ -27,6 +30,7 @@ const IndiProduct = ({product}) => {
           window.alert('Sorry. Product is out of stock')
           return
         }
+        enqueueSnackbar('Item added to Cart', {variant: 'success'})
         dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } })
         router.push('/cart')
       }
