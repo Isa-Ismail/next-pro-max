@@ -35,7 +35,7 @@ const useStyles = makeStyles({
     },
     navbarbutton: {
         color: 'white'
-    }
+    },
 })
 
 export default useStyles

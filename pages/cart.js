@@ -44,7 +44,7 @@ const Cart = () => {
                 <Grid item md = {8}>
                     <Card className = '!to-red-100'>
                     <Table className={classes.table} aria-label="simple table">
-                        <TableHead className = '!bg-lime-600' >
+                        <TableHead className = '!bg-amber-300' >
                             <TableRow>
                                 <TableCell className = '!text-xl' align="right">product</TableCell>
                                 <TableCell className = '!text-xl' align="right">Quantity</TableCell>

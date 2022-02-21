@@ -35,6 +35,19 @@ const Layout = ({title ,children, description}) => {
             fontWeight: 400,
             margin: '.3rem 0',
             marginLeft: '.5rem'
+          },
+          h4: {
+            fontFamily: 'Changa',
+            fontSize: '1.4rem',
+            fontWeight: 400,
+            margin: '.3rem 0',
+            marginLeft: '.5rem'
+          },
+          h5: {
+            fontFamily: 'Changa',
+            fontSize: '1rem',
+            fontWeight: 400,
+            margin: '.3rem 0',
           }
         },
         palette: {
