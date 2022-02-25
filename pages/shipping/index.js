@@ -17,12 +17,106 @@ const Shipping = () => {
   <Layout>
       <Grid container spacing = {2}>
         <Grid item md = {7} sm = {12}>
+        <div>
         <Typography variant = 'h1'>
-              Customer
+              Customer info
         </Typography>
           <Card>
-            
+            <CardContent>
+              <div className="flex space-x-20">
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              halfWidth
+              id="firstName"
+              label="first name"
+              name="firstName"
+              autoFocus
+              />
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              halfWidth
+              id="lastName"
+              label="last name"
+              name="lasstName"
+              />
+              </div>
+              <div className="flex space-x-20">
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              halfWidth
+              id="email"
+              label="email address"
+              name="email"
+              />
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              halfWidth
+              id="firstName"
+              label="first name"
+              name="firstName"
+              />
+              </div>
+            </CardContent>
           </Card>
+          </div>
+          <div className = "my-10">
+          <Typography className = "" variant = 'h1'>
+              Shipping address
+          </Typography>
+          <Card>
+            <CardContent>
+              <div className="flex space-x-20">
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              halfWidth
+              id="firstName"
+              label="first name"
+              name="firstName"
+              autoFocus
+              />
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              halfWidth
+              id="lastName"
+              label="last name"
+              name="lasstName"
+              />
+              </div>
+              <div className="flex space-x-20">
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              halfWidth
+              id="email"
+              label="email address"
+              name="email"
+              />
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              halfWidth
+              id="firstName"
+              label="first name"
+              name="firstName"
+              />
+              </div>
+            </CardContent>
+          </Card>
+          </div>
         </Grid>
         <Grid item md = {5} sm = {12} style = {{position: 'sticky'}}>
           <Typography variant = 'h1'>Your order</Typography>
@@ -48,7 +142,7 @@ const Shipping = () => {
             </TableHead>
               <TableBody>
                 {state.cart.cartItems.map(item=>(
-                  <TableRow>
+                  <TableRow key = {item._id}>
                     <TableCell>
                       <Image src={item.image} width={40} height={40}/>
                       <Typography variant = 'h5'>{item.name}</Typography>
