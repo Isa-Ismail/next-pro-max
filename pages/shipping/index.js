@@ -1,7 +1,7 @@
 import { Card, CardContent, Button, TextField, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@material-ui/core";
 import Layout from "../../components/Layout";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Store } from "../../utils/store"
 import Image from "next/image";
@@ -13,6 +13,25 @@ const Shipping = () => {
   useEffect(() => {
     if ( !state.userInfo ) router.push('/login');
   },[state.userInfo])
+  const [form, setForm] = useState (
+    {
+      firstName:'',
+      lastName:'',
+      email:'',
+      telephone:'',
+      fullName:'',
+      country:'',
+      city:'',
+      address:'',
+      postalCode:''
+    }
+  )
+  const handleChange = (e) => {
+    setForm({
+      ...form, [e.target.name]: e.target.value
+    })
+  }
+  console.log(form)
   return (
   <Layout>
       <Grid container spacing = {2}>
@@ -23,16 +42,18 @@ const Shipping = () => {
         </Typography>
           <Card>
             <CardContent>
-              <div className="flex space-x-20">
+              <div className="flex space-x-28">
               <TextField
               variant="outlined"
               margin="normal"
               required
               halfWidth
               id="firstName"
-              label="first name"
-              name="firstName"
+              label="First name"
+              value={form.firstName}
+              name='firstName'
               autoFocus
+              onChange={handleChange}
               />
               <TextField
               variant="outlined"
@@ -40,28 +61,34 @@ const Shipping = () => {
               required
               halfWidth
               id="lastName"
-              label="last name"
-              name="lasstName"
+              label="Last name"
+              value={form.lastName}
+              name='lastName'
+              onChange={handleChange}
               />
               </div>
-              <div className="flex space-x-20">
+              <div className="flex space-x-28">
               <TextField
               variant="outlined"
               margin="normal"
               required
               halfWidth
               id="email"
-              label="email address"
-              name="email"
+              label="Email address"
+              value={form.email}
+              name='email'
+              onChange={handleChange}
               />
               <TextField
               variant="outlined"
               margin="normal"
               required
               halfWidth
-              id="firstName"
-              label="first name"
-              name="firstName"
+              id="telephone"
+              label="Telephone"
+              value={form.telephone}
+              name='telephone'
+              onChange={handleChange}
               />
               </div>
             </CardContent>
@@ -73,45 +100,65 @@ const Shipping = () => {
           </Typography>
           <Card>
             <CardContent>
-              <div className="flex space-x-20">
+              <div>
               <TextField
               variant="outlined"
               margin="normal"
               required
-              halfWidth
-              id="firstName"
-              label="first name"
-              name="firstName"
+              fullWidth
+              id="fullName"
+              label="Full Name"
+              value={form.fullName}
+              name='fullName'
               autoFocus
-              />
-              <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              halfWidth
-              id="lastName"
-              label="last name"
-              name="lasstName"
+              onChange={handleChange}
               />
               </div>
-              <div className="flex space-x-20">
+              <div className="flex space-x-28">
               <TextField
               variant="outlined"
               margin="normal"
               required
               halfWidth
-              id="email"
-              label="email address"
-              name="email"
+              id="country"
+              label="Country"
+              value={form.country}
+              name='country'
+              onChange={handleChange}
               />
               <TextField
               variant="outlined"
               margin="normal"
               required
               halfWidth
-              id="firstName"
-              label="first name"
-              name="firstName"
+              id="city"
+              label="City"
+              value={form.city}
+              name='city'
+              onChange={handleChange}
+              />
+              </div>
+              <div className="flex space-x-28">
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              halfWidth
+              id="address1"
+              label="Address"
+              value={form.address}
+              onChange={handleChange}
+              />
+              <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              halfWidth
+              id="postal code"
+              label="Postal code" 
+              value={form.postalCode}
+              name='postalCode'
+              onChange={handleChange}
               />
               </div>
             </CardContent>
@@ -123,22 +170,23 @@ const Shipping = () => {
           <Card>
             <Table>
             <TableHead className = '!bg-amber-300'>
-              <TableCell>
-                <Typography variant = 'h4'>
-                  item
-                </Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant = 'h4'>
-                  quantity
-                </Typography>
-              </TableCell>
-              <TableCell>
-                <Typography variant = 'h4'>
-                  price ($)
-                </Typography>
-              </TableCell>
-              
+              <TableRow>
+                <TableCell>
+                  <Typography variant = 'h4'>
+                    item
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant = 'h4'>
+                    quantity
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant = 'h4'>
+                    price ($)
+                  </Typography>
+                </TableCell>
+              </TableRow>
             </TableHead>
               <TableBody>
                 {state.cart.cartItems.map(item=>(
@@ -166,18 +214,18 @@ const Shipping = () => {
               </TableCell>
               <div>
                 <div className='flex p-2'>
-                  <Typography variant = 'h2' className = 'text-blue-800'>
+                  <Typography variant = 'h2'>
                     Subtotal
                   </Typography>
-                  <Typography variant = 'h2' className = 'pl-20 text-blue-800'>
+                  <Typography variant = 'h2' className = 'pl-20'>
                     ${state.cart.cartItems.reduce((a, b) => a + b.quantity*b.price,0)}
                   </Typography>
                 </div>
                 <div className='flex p-2'>
-                  <Typography variant = 'h2' className = 'text-blue-800'>
+                  <Typography variant = 'h2' className = ''>
                     Tax
                   </Typography>
-                  <Typography variant = 'h2' className = 'pl-28 text-blue-800'>
+                  <Typography variant = 'h2' className = 'pl-28'>
                     $0
                   </Typography>
                 </div>
