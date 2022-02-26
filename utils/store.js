@@ -8,7 +8,9 @@ const initialState = {
     darkMode: Cookies.get('darkMode') === 'ON',
 
     cart: {
-        cartItems: Cookies.get('cartItems') ? JSON.parse(Cookies.get('cartItems')) : []
+        cartItems: Cookies.get('cartItems') ? JSON.parse(Cookies.get('cartItems')) : [],
+        shippingAddress: Cookies.get('shippingAddress') ? JSON.parse(Cookies.get('shippingAddress')) : {location: {}},
+        paymentMethod: Cookies.get('paymentMethod') ? JSON.parse(Cookies.get('paymentMethod')) : ''
     },
 
     userInfo: Cookies.get('userInfo')

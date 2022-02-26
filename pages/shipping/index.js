@@ -1,4 +1,4 @@
-import { Card, CardContent, Button, TextField, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@material-ui/core";
+import { Card, CardContent, Button, TextField, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography, Select, MenuItem } from "@material-ui/core";
 import Layout from "../../components/Layout";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -23,7 +23,8 @@ const Shipping = () => {
       country:'',
       city:'',
       address:'',
-      postalCode:''
+      postalCode:'',
+      paymentMethod: 'paypal'
     }
   )
   const handleChange = (e) => {
@@ -31,11 +32,21 @@ const Shipping = () => {
       ...form, [e.target.name]: e.target.value
     })
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(firstName&&lastName&&email&&telephone&&fullName&&city&&country&&address&&postalCode){
+      dispatch({type: 'UPDATE_SHIPPING', payload: form})
+    }else{
+      alert('fill up form correctly')
+    }
+  }
   console.log(form)
   return (
   <Layout>
       <Grid container spacing = {2}>
         <Grid item md = {7} sm = {12}>
+        <form onSubmit={handleSubmit}>
         <div>
         <Typography variant = 'h1'>
               Customer info
@@ -95,7 +106,7 @@ const Shipping = () => {
           </Card>
           </div>
           <div className = "my-10">
-          <Typography className = "" variant = 'h1'>
+          <Typography variant = 'h1'>
               Shipping address
           </Typography>
           <Card>
@@ -161,9 +172,23 @@ const Shipping = () => {
               onChange={handleChange}
               />
               </div>
+              <div className = "my-10">
+              <Typography variant = 'h1'>
+                Payment Method
+                </Typography>
+                <Select className='ml-14' name = 'paymentMethod' value={form.paymentMethod} onChange= {handleChange}>
+                <MenuItem value = 'paypal'>
+                  Paypal
+                </MenuItem>
+                <MenuItem value = 'cashOnDelivery'>
+                  Cash on Delivery
+                </MenuItem>
+                </Select>
+              </div>
             </CardContent>
           </Card>
           </div>
+          </form>
         </Grid>
         <Grid item md = {5} sm = {12} style = {{position: 'sticky'}}>
           <Typography variant = 'h1'>Your order</Typography>
