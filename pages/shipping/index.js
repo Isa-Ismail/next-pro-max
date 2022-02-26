@@ -172,7 +172,7 @@ const Shipping = () => {
               onChange={handleChange}
               />
               </div>
-              <div className = "my-10">
+              <div className = "my-10  space-x-6">
               <Typography variant = 'h1'>
                 Payment Method
                 </Typography>
@@ -184,6 +184,9 @@ const Shipping = () => {
                   Cash on Delivery
                 </MenuItem>
                 </Select>
+                <Button color = 'primary' type = 'submit' variant = 'contained'>
+                  Proceed to pay
+                </Button>
               </div>
             </CardContent>
           </Card>
