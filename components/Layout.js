@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'  // Link is a component from Material UI
-import { AppBar, Typography, Toolbar, Container, Badge, createTheme, ThemeProvider, CssBaseline, Switch, Button } from '@material-ui/core'
+import { AppBar, Typography, Toolbar, Container, Badge, createTheme, ThemeProvider, CssBaseline, Switch, Button, TextField, InputBase } from '@material-ui/core'
 import useStyles from '../utils/styles'
 import { FaShoppingCart, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { useContext } from 'react'
@@ -77,6 +77,11 @@ const Layout = ({title ,children, description}) => {
             <AppBar position = 'fixed' className = {classes.navbar}>
                 <Toolbar>
                     <Typography className = {classes.brand}><Link href = '/'><a>amazona</a></Link></Typography>
+                    <div>
+                    <InputBase className='bg-slate-200 px-5 mx-5 border-r-2'
+                    placeholder="Search…"
+                    />
+                    </div>
                     <div className = {classes.grow}></div>
                     <Switch checked = {darkMode} onChange = {darkModeSwitch} />
                     <Typography variant = 'h6'>

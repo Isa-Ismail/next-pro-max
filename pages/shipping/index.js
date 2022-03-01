@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Store } from "../../utils/store"
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 const Shipping = () => {
   
@@ -27,6 +28,19 @@ const Shipping = () => {
       paymentMethod: 'paypal'
     }
   )
+  const {
+    firstName,
+    lastName,
+    email,
+    telephone,
+    fullName,
+    country,
+    city,
+    address,
+    postalCode,
+    paymentMethod,
+  } = form
+
   const handleChange = (e) => {
     setForm({
       ...form, [e.target.name]: e.target.value
@@ -36,7 +50,9 @@ const Shipping = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if(firstName&&lastName&&email&&telephone&&fullName&&city&&country&&address&&postalCode){
-      dispatch({type: 'UPDATE_SHIPPING', payload: form})
+      dispatch({type: 'SAVE_SHIPPING_ADDRESS', payload: form})
+      Cookies.set('shippingAddress', JSON.stringify(form))
+      router.push('/shipping/order')
     }else{
       alert('fill up form correctly')
     }
@@ -155,7 +171,8 @@ const Shipping = () => {
               margin="normal"
               required
               halfWidth
-              id="address1"
+              id="address"
+              name='address'
               label="Address"
               value={form.address}
               onChange={handleChange}
