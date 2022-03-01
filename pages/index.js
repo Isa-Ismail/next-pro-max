@@ -17,7 +17,7 @@ const Home = ({products}) => {
   <Layout title = 'Home page' description = 'Browse your favorite shirts and other products online and get delivered at your comfort zone in time and for money you can afford'>
     <Typography variant = "h1">Products</Typography>
     <Grid container spacing = {3}>
-      {query?products.filter(item=> item.name.toLowerCase().indexOf(query)!==-1).map((product) => {
+      {products.filter(item=> query?item.name.toLowerCase().indexOf(query)!==-1:item).map((product) => {
         return (
           <Grid item md = {4} key = {product.name}>
             <Card>
@@ -38,28 +38,8 @@ const Home = ({products}) => {
             </Card>
           </Grid>
         )
-      }):products.map((product) => {
-        return (
-          <Grid item md = {4} key = {product.name}>
-            <Card>
-              <Link href = {`/products/${product.slug}`}>
-              <CardActionArea>
-                <CardMedia className = '!h-[300px]' component = "img" image = {product.image} title = {product.name} />
-              </CardActionArea>
-              </Link>
-              <CardContent>
-                <Typography gutterBottom variant = "h1">{product.name}</Typography>
-                <Rating name = "read-only" value = {product.rating} readOnly precision={0.1} />
-              </CardContent>
-              <CardActions>
-                <Typography variant = "h2">${product.price}</Typography>
-                <div className = {classes.grow}></div>
-                <Button size = "medium" variant = 'contained' color= 'primary'><Link href = {`/products/${product.slug}`} ><Typography variant = 'h2'>View Product</Typography></Link></Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        )
-      })}
+      })
+      }
     </Grid>
   </Layout>)
 }
