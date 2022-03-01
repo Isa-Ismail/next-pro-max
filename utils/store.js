@@ -5,6 +5,8 @@ export const Store = createContext()
 
 const initialState = {
 
+    query:'',
+
     darkMode: Cookies.get('darkMode') === 'ON',
 
     cart: {
@@ -62,6 +64,11 @@ const reducer = (state, action) => {
                   ...state,
                   cart: { ...state.cart, shippingAddress: action.payload },
                 }
+            case 'QUERY':{
+                return{
+                    ...state, query: action.payload
+                }
+            }
             default:
                 return state
     }

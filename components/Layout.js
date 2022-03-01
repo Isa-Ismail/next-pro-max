@@ -3,7 +3,7 @@ import Link from 'next/link'  // Link is a component from Material UI
 import { AppBar, Typography, Toolbar, Container, Badge, createTheme, ThemeProvider, CssBaseline, Switch, Button, TextField, InputBase } from '@material-ui/core'
 import useStyles from '../utils/styles'
 import { FaShoppingCart, FaSignOutAlt, FaUser } from 'react-icons/fa'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Store } from '../utils/store'
 import Cookies from 'js-cookie'
 import { useSnackbar } from 'notistack'
@@ -65,6 +65,13 @@ const Layout = ({title ,children, description}) => {
         const newDarkMode = !darkMode
         Cookies.set('darkMode', newDarkMode ? 'ON' : 'OFF')
     } 
+    const [query, setQuery] = useState('')
+
+    const handleQuery = (e)=> {
+      setQuery(e.target.value)
+      dispatch({type:'QUERY', payload: query})
+    }
+
     const classes = useStyles();
     return (
         <div>
@@ -79,6 +86,8 @@ const Layout = ({title ,children, description}) => {
                     <Typography className = {classes.brand}><Link href = '/'><a>amazona</a></Link></Typography>
                     <div>
                     <InputBase className='bg-slate-200 px-5 mx-5 border-r-2'
+                    value={query}
+                    onChange={handleQuery}
                     placeholder="Search…"
                     />
                     </div>
