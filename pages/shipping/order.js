@@ -6,7 +6,7 @@ const Order = () => {
    <Layout title = 'Place Order'>
       <Grid container spacing={2}>
         <Typography variant='h1'>
-          Order details
+          Order has been placed
         </Typography>
         <div className='flex'>
           <Grid item md={8}>

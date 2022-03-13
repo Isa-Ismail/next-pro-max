@@ -6,9 +6,9 @@ import { useContext } from "react";
 import { Store } from "../../utils/store"
 import Image from "next/image";
 import Cookies from "js-cookie";
-
+import { useSnackbar } from "notistack";
 const Shipping = () => {
-  
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar()
   const {state , dispatch} = useContext( Store )
   const router = useRouter()
   useEffect(() => {
@@ -53,11 +53,11 @@ const Shipping = () => {
       dispatch({type: 'SAVE_SHIPPING_ADDRESS', payload: form})
       Cookies.set('shippingAddress', JSON.stringify(form))
       router.push('/shipping/order')
+      enqueueSnackbar('Order placed successfully', {variant: 'success'})
     }else{
       alert('fill up form correctly')
     }
   }
-  console.log(form)
   return (
   <Layout>
       <Grid container spacing = {2}>
