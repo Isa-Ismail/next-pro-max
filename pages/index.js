@@ -14,7 +14,7 @@ const Home = ({products}) => {
   const {query} = state
   const classes = useStyles()
   return (
-  <Layout title = 'Home page' description = 'Browse your favorite shirts and other products online and get delivered at your comfort zone in time and for money you can afford'>
+  <Layout title = 'Home page' description = 'Browse your favorite shirts and other products online and get delivered at your comfort zone in time and for money you can afford. So go on.'>
     <Typography variant = "h1">Products</Typography>
     <Grid container spacing = {3}>
       {products.filter(item=> query?item.name.toLowerCase().indexOf(query)!==-1:item).map((product) => {
