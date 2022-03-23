@@ -33,7 +33,7 @@ const Home = ({products}) => {
               <CardActions>
                 <Typography variant = "h2">${product.price}</Typography>
                 <div className = {classes.grow}></div>
-                <Button size = "medium" variant = 'contained' color= 'primary'><Link href = {`/products/${product.slug}`} ><Typography variant = 'h2'>View Product</Typography></Link></Button>
+                <Button size = "medium" variant = 'contained' color= 'primary'><Link href = {`/products/${product._id}`} ><Typography variant = 'h2'>View Product</Typography></Link></Button>
               </CardActions>
             </Card>
           </Grid>
