@@ -21,7 +21,7 @@ const Home = ({products}) => {
         return (
           <Grid item md = {4} key = {product.name}>
             <Card>
-              <Link href = {`/products/${product.slug}`}>
+              <Link href = {`/products/${product._id}`}>
               <CardActionArea>
                 <CardMedia className = '!h-[300px]' component = "img" image = {product.image} title = {product.name} />
               </CardActionArea>
@@ -46,7 +46,7 @@ const Home = ({products}) => {
 
 export default Home
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   await db.connect()
   const products = await Product.find({}).lean()
   await db.disconnect()
