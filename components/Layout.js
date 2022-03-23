@@ -76,14 +76,14 @@ const Layout = ({title ,children, description}) => {
     return (
         <div>
             <Head>
-                <title>{title ? `${title} - Next Amazona` : 'Next Amazona'}</title>
+                <title>{title ? `${title} - Next Amazon` : 'Next Amazona'}</title>
                 {description && <meta name="description" content={description}></meta>}
             </Head>
             <ThemeProvider theme={theme}>
             <CssBaseline />
             <AppBar position = 'fixed' className = {classes.navbar}>
                 <Toolbar>
-                    <Typography className = {classes.brand}><Link href = '/'><a>amazona</a></Link></Typography>
+                    <Typography className = {classes.brand}><Link href = '/'><a>amazon</a></Link></Typography>
                     <div>
                     <InputBase className='bg-slate-200 px-5 mx-5 border-r-2'
                     value={query}
