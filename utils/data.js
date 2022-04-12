@@ -104,7 +104,7 @@ const data = {
       description: 'A popular shorts',
     },
     {
-      name: 'Hot shorts',
+      name: 'Girls shorts',
       slug: 'hot-shorts',
       category: 'Pants',
       image: '/images/sexy.jpg',

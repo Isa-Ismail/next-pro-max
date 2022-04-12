@@ -45,14 +45,9 @@ const IndiProduct = ({product}) => {
     const {state, dispatch} = useContext(Store)
     const addToCartHandler = async () => {
         const existItem = state.cart.cartItems.find((x) => x._id === product._id)
-        const quantity = existItem ? existItem.quantity + 1 : 1;
-        const { data } = await axios.get(`https://next-pro-max.vercel.app/api/products/${product._id}`)
-        if (data.countInStock < quantity) {
-          window.alert('Sorry. Product is out of stock')
-          return
-        }
-        enqueueSnackbar('Item added to Cart', {variant: 'success'})
+        const quantity = existItem ? existItem.quantity + 1 : 1
         dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } })
+        enqueueSnackbar('Item added to Cart', {variant: 'success'})
         router.push('/cart')
       }
     return (
