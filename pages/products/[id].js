@@ -13,25 +13,18 @@ import { Store } from "../../utils/store"
 import axios from "axios"
 import { useSnackbar } from 'notistack'
 
-export const getStaticProps = async (context) => {
-
-    const {params} = context
-    const {id} = params
-    const { data } = await axios.get(`https://next-pro-max.vercel.app/api/products/${id}`)
+export async function getServerSideProps(context) {
+    const { params } = context;
+    const { id } = params;
+  
+    await db.connect();
+    const product = await Product.findOne({ id }, '-reviews').lean();
+    await db.disconnect();
     return {
       props: {
-        product: data
-      }
-    }
-}
-
-export const getStaticPaths = async (context) => {
-
-    const { data } = await axios.get(`https://next-pro-max.vercel.app/api/products`)
-    return {
-    paths: data.map( item => ({params: {id: item._id.toString()}})),
-    fallback: false
-    }
+        product: db.convertDocToObj(product),
+      },
+    };
 }
 
 const IndiProduct = ({product}) => {

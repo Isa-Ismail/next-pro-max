@@ -46,7 +46,7 @@ const Home = ({products}) => {
 
 export default Home
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   await db.connect()
   const products = await Product.find({}).lean()
   await db.disconnect()
