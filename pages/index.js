@@ -46,13 +46,12 @@ const Home = ({products}) => {
 
 export default Home
 
-export const getStaticProps = async (context) => {
-  await db.connect()
-  const products = await Product.find({}).lean()
-  await db.disconnect()
-  return {
-    props: {
-      products: products.map(db.convertDocToObj)
+export const getStaticProps = async () => {
+    const { data } = await axios.get(`https://next-pro-max.vercel.app/api/products`)
+    return {
+      props: {
+        product: data
+        },
+        revalidate: 60
     }
-  }
 }
