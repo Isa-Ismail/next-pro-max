@@ -46,13 +46,12 @@ const Home = ({products}) => {
 
 export default Home
 
-export const getServerSideProps = async (context) => {
-  await db.connect()
-  const products = await Product.find({}).lean()
-  await db.disconnect()
+export const getStaticProps = async (context) => {
+  const res = await fetch('https://next-pro-max.vercel.app/api/products')
+  const products = await res.json()
   return {
     props: {
-      products: products.map(db.convertDocToObj)
+      products: products
     }
   }
 }
