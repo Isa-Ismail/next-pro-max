@@ -15,16 +15,17 @@ import { useSnackbar } from 'notistack'
 
 export const getStaticProps = async (context) => {
   const res = await fetch(`https://next-pro-max.vercel.app/api/products/${context.params.id}`)
-  const products = await res.json()
+    const product = await res.json()
+    
     return {
         props: {
-            products: products
+            product: product
         }
     }
 }
 
 export const getStaticPaths = async () => {
-    const { data } = await axios.get('https://next-pro-max.vercel.app/api/products')
+    const { data } = await axios.get(`https://next-pro-max.vercel.app/api/products`)
     return {
         paths: data.map((product) => ({
             params: { id: product._id }
