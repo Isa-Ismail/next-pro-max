@@ -17,7 +17,7 @@ export const getStaticProps = async (context) => {
 
     const {params} = context
     const {id} = params
-    const { data } = await axios.get(`https://next-pro-max.vercel.app/api/products/${id}`)
+    const { data } = await axios.get(`http://localhost:3000//${id}`)
     return {
       props: {
         product: data
@@ -28,7 +28,7 @@ export const getStaticProps = async (context) => {
 
 export const getStaticPaths = async (context) => {
 
-    const { data } = await axios.get(`https://next-pro-max.vercel.app/api/products`)
+    const { data } = await axios.get(`http://localhost:3000/api/products`)
     return {
     paths: data.map( item => ({params: {id: item._id.toString()}})),
     fallback: true

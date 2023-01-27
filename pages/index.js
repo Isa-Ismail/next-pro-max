@@ -47,7 +47,7 @@ const Home = ({products}) => {
 export default Home
 
 export const getStaticProps = async () => {
-    const { data } = await axios.get(`https://next-pro-max.vercel.app/api/products`)
+    const { data } = await axios.get(`http://localhost:3000/api/products`)
     return {
       props: {
         products: data
