@@ -15,7 +15,7 @@ const connect = async () => {
     }
     await mongoose.disconnect();
   }
-  const db = await mongoose.connect(process.env.MONGODB_URI, {
+  const db = await mongoose.connect("mongodb+srv://fahim:fahim123@cluster0.tkgtp.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });

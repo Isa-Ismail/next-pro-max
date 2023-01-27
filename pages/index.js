@@ -46,12 +46,14 @@ const Home = ({products}) => {
 
 export default Home
 
-export const getStaticProps = async () => {
-    const { data } = await axios.get(`http://localhost:3000/api/products`)
-    return {
-      props: {
-        products: data
-        },
-        revalidate: 60
-    }
+export async function getServerSideProps() {
+  await db.connect();
+  const products = await Product.find().lean();
+  const featuredProducts = await Product.find({ isFeatured: true }).lean();
+  return {
+    props: {
+      featuredProducts: featuredProducts.map(db.convertDocToObj),
+      products: products.map(db.convertDocToObj),
+    },
+  };
 }
