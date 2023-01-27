@@ -46,7 +46,7 @@ const Home = ({products}) => {
 
 export default Home
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   await db.connect();
   const products = await Product.find().lean();
   const featuredProducts = await Product.find({ isFeatured: true }).lean();
