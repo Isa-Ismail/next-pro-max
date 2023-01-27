@@ -50,7 +50,7 @@ export const getStaticProps = async () => {
     const { data } = await axios.get(`https://next-pro-max.vercel.app/api/products`)
     return {
       props: {
-        product: data
+        products: data
         },
         revalidate: 60
     }
