@@ -9,7 +9,7 @@ export const signToken = (user) => {
       isAdmin: user.isAdmin,
     },
 
-    process.env.JWT_SECRET,
+    "AHDWDPAM:WJmpwejpqdqk[q3213f23rj-dqqADAD",
     {
       expiresIn: '30d',
     }
