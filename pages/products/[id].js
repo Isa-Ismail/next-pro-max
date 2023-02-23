@@ -102,7 +102,7 @@ const IndiProduct = ({product}) => {
                             </CardActions>
                         </Card>
                     </Grid>
-                    <Grid item md = {12}>
+                    {/* <Grid item md = {12}>
                                     <Card>
                                         <CardContent>
                                             <TextField
@@ -126,8 +126,8 @@ const IndiProduct = ({product}) => {
                                             />
                                         </CardActions>
                                     </Card>
-                    </Grid>
-                    <Grid item md = {12}>
+                    </Grid> */}
+                    {/* <Grid item md = {12}>
                         <Card>
                             <CardContent>
                                 <Typography variant = 'h1'>Reviews</Typography>
@@ -139,7 +139,7 @@ const IndiProduct = ({product}) => {
                                 </Card>
                             </CardContent>
                         </Card>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
                 </div>
             </Layout>
