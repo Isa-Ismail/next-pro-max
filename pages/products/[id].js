@@ -13,41 +13,41 @@ import { Store } from "../../utils/store"
 import axios from "axios"
 import { useSnackbar } from 'notistack'
 
-export const getStaticProps = async (context) => {
+// export const getStaticProps = async (context) => {
 
-    const {params} = context
-    const {id} = params
-    const { data } = await axios.get(`https://next-pro-max.vercel.app/api/products/${id}`)
-    return {
-      props: {
-        product: data
-        },
-        revalidate: 60
-    }
-}
-
-export const getStaticPaths = async (context) => {
-
-    const { data } = await axios.get(`https://next-pro-max.vercel.app//api/products`)
-    return {
-    paths: data.map( item => ({params: {id: item._id.toString()}})),
-    fallback: true
-    }
-}
-
-// export async function getServerSideProps(context) {
-//   const { params } = context;
-//   const { slug } = params;
-
-//   await db.connect();
-//   const product = await Product.findOne({ slug }).lean();
-//   await db.disconnect();
-//   return {
-//     props: {
-//       product: product ? db.convertDocToObj(product) : null,
-//     },
-//   };
+//     const {params} = context
+//     const {id} = params
+//     const { data } = await axios.get(`https://next-pro-max.vercel.app/api/products/${id}`)
+//     return {
+//       props: {
+//         product: data
+//         },
+//         revalidate: 60
+//     }
 // }
+
+// export const getStaticPaths = async (context) => {
+
+//     const { data } = await axios.get(`https://next-pro-max.vercel.app//api/products`)
+//     return {
+//     paths: data.map( item => ({params: {id: item._id.toString()}})),
+//     fallback: true
+//     }
+// }
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { id } = params;
+
+  await db.connect();
+  const product = await Product.findOne({ id }).lean();
+  await db.disconnect();
+  return {
+    props: {
+      product: product ? db.convertDocToObj(product) : null,
+    },
+  };
+}
 
 const IndiProduct = ({product}) => {
 
