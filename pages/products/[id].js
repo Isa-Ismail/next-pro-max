@@ -35,6 +35,7 @@ export const getStaticPaths = async (context) => {
     }
 }
 
+// hotfix
 // export async function getServerSideProps(context) {
 //   const { params } = context;
 //   const { id } = params;
