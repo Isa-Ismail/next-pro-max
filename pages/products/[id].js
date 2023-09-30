@@ -77,9 +77,6 @@ const IndiProduct = ({product}) => {
                             <CardActionArea>
                                 <CardMedia height="550" component = "img" image = {product.image} title = {product.name} />
                             </CardActionArea>
-                            <CardActions>
-                                <Modal slug = {slug} product = {product}/>
-                            </CardActions>
                         </Card>
                     </Grid>
                     <Grid item md ={3}>
