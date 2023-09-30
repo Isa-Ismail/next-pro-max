@@ -131,7 +131,7 @@ const Layout = ({title ,children, description}) => {
                 }
             </Container>
             <footer className={classes.footer}>
-                <Typography>All rights preserved to &copy; Amazon next dev</Typography>
+                <Typography>All rights preserved to &copy; <a href="https://isa-ismail.vercel.app/">Isa Mohammad Ismail</a></Typography>
             </footer>
             </ThemeProvider>
         </div>
