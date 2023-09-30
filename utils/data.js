@@ -104,10 +104,10 @@ const data = {
       description: 'A popular shorts',
     },
     {
-      name: 'Girls shorts',
-      slug: 'hot-shorts',
+      name: 'Little Girl dress',
+      slug: 'little-girl',
       category: 'Pants',
-      image: '/images/sexy.jpg',
+      image: '/images/dress.jpg',
       price: 30,
       brand: 'Casely',
       rating: 4.5,
